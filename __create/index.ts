@@ -51,6 +51,8 @@ app.use('*', (c, next) => {
 app.use(contextStorage());
 
 app.onError((err, c) => {
+  // Enhanced error logging for Vercel debugging
+  console.error('Hono server error:', serializeError(err));
   if (c.req.method !== 'GET') {
     return c.json(
       {
@@ -60,7 +62,13 @@ app.onError((err, c) => {
       500
     );
   }
-  return c.html(getHTMLForErrorPage(err), 200);
+  // Return a minimal error page with stack trace for debugging
+  return c.html(`
+    <html><body>
+      <h1>Internal Server Error</h1>
+      <pre>${JSON.stringify(serializeError(err), null, 2)}</pre>
+    </body></html>
+  `, 500);
 });
 
 if (process.env.CORS_ORIGINS) {
