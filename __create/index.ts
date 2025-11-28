@@ -46,23 +46,19 @@ app.use(contextStorage());
 
 app.onError((err, c) => {
   // Enhanced error logging for Vercel debugging
-  console.error('Hono server error:', serializeError(err));
+  const serialized = serializeError(err);
+  console.error('Hono server error:', serialized);
   if (c.req.method !== 'GET') {
     return c.json(
       {
         error: 'An error occurred in your app',
-        details: serializeError(err),
+        details: serialized,
       },
       500
     );
   }
-  // Return a minimal error page with stack trace for debugging
-  return c.html(`
-    <html><body>
-      <h1>Internal Server Error</h1>
-      <pre>${JSON.stringify(serializeError(err), null, 2)}</pre>
-    </body></html>
-  `, 500);
+  // Return detailed error page HTML for debugging
+  return c.html(getHTMLForErrorPage(err), 500);
 });
 
 if (process.env.CORS_ORIGINS) {
