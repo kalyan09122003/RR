@@ -9,14 +9,22 @@ const API_BASENAME = '/api';
 const api = new Hono();
 
 // Get current directory
-const __dirname = join(fileURLToPath(new URL('.', import.meta.url)), '../src/app/api');
+// Resolve source API directory robustly; in production (bundled) the relative path
+// from the compiled file may not exist. Use process.cwd() which points at project root.
+const apiSourceDir = join(process.cwd(), 'src', 'app', 'api');
 if (globalThis.fetch) {
   globalThis.fetch = updatedFetch;
 }
 
 // Recursively find all route.js files
 async function findRouteFiles(dir: string): Promise<string[]> {
-  const files = await readdir(dir);
+  let files: string[] = [];
+  try {
+    files = await readdir(dir);
+  } catch {
+    // Directory missing in production – return empty set.
+    return [];
+  }
   let routes: string[] = [];
 
   for (const file of files) {
@@ -28,7 +36,7 @@ async function findRouteFiles(dir: string): Promise<string[]> {
         routes = routes.concat(await findRouteFiles(filePath));
       } else if (file === 'route.js') {
         // Handle root route.js specially
-        if (filePath === join(__dirname, 'route.js')) {
+        if (filePath === join(apiSourceDir, 'route.js')) {
           routes.unshift(filePath); // Add to beginning of array
         } else {
           routes.push(filePath);
@@ -44,7 +52,7 @@ async function findRouteFiles(dir: string): Promise<string[]> {
 
 // Helper function to transform file path to Hono route path
 function getHonoPath(routeFile: string): { name: string; pattern: string }[] {
-  const relativePath = routeFile.replace(__dirname, '');
+  const relativePath = routeFile.replace(apiSourceDir, '');
   const parts = relativePath.replace(/\\/g, '/').split('/').filter(Boolean);
   const routeParts = parts.slice(0, -1); // Remove 'route.js'
   if (routeParts.length === 0) {
@@ -65,16 +73,18 @@ function getHonoPath(routeFile: string): { name: string; pattern: string }[] {
 
 // Import and register all routes
 async function registerRoutes() {
-  const routeFiles = (
-    await findRouteFiles(__dirname).catch((error) => {
-      console.error('Error finding route files:', error);
-      return [];
-    })
-  )
-    .slice()
-    .sort((a, b) => {
-      return b.length - a.length;
-    });
+  // Skip dynamic scanning in production – API routes should be bundled.
+  const shouldScan = import.meta.env.DEV && !process.env.VERCEL;
+  const routeFiles = shouldScan
+    ? (
+        await findRouteFiles(apiSourceDir).catch((error) => {
+          console.error('Error finding route files:', error);
+          return [];
+        })
+      )
+        .slice()
+        .sort((a, b) => b.length - a.length)
+    : [];
 
   // Clear existing routes
   api.routes = [];
