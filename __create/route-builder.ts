@@ -73,18 +73,22 @@ function getHonoPath(routeFile: string): { name: string; pattern: string }[] {
 
 // Import and register all routes
 async function registerRoutes() {
-  // Only scan for API routes in non-production environments.
-  const shouldScan = process.env.NODE_ENV !== 'production';
-  const routeFiles = shouldScan
-    ? (
-        await findRouteFiles(apiSourceDir).catch((error) => {
-          console.error('Error finding route files:', error);
-          return [];
-        })
-      )
-        .slice()
-        .sort((a, b) => b.length - a.length)
-    : [];
+  // Hard-disable dynamic route scanning in production.
+  let routeFiles: string[] = [];
+  if (process.env.NODE_ENV !== 'production') {
+    routeFiles = (
+      await findRouteFiles(apiSourceDir).catch((error) => {
+        console.error('Error finding route files:', error);
+        return [];
+      })
+    )
+      .slice()
+      .sort((a, b) => b.length - a.length);
+  } else {
+    // In production, do not scan or register any dynamic API routes.
+    api.routes = [];
+    return;
+  }
 
   // Clear existing routes
   api.routes = [];
