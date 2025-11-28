@@ -73,8 +73,9 @@ function getHonoPath(routeFile: string): { name: string; pattern: string }[] {
 
 // Import and register all routes
 async function registerRoutes() {
-  // Skip dynamic scanning in production – API routes should be bundled.
-  const shouldScan = import.meta.env.DEV && !process.env.VERCEL;
+  // Robust production check: skip scanning in Vercel and any production build.
+  const isProd = process.env.NODE_ENV === 'production' || process.env.VERCEL;
+  const shouldScan = !isProd;
   const routeFiles = shouldScan
     ? (
         await findRouteFiles(apiSourceDir).catch((error) => {
