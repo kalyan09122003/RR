@@ -9,7 +9,8 @@ import { contextStorage, getContext } from 'hono/context-storage';
 import { cors } from 'hono/cors';
 import { proxy } from 'hono/proxy';
 import { requestId } from 'hono/request-id';
-import { createHonoServer } from 'react-router-hono-server/node';
+import { createHonoServer as createNodeServer } from 'react-router-hono-server/node';
+import { createHonoServer as createLambdaServer } from 'react-router-hono-server/aws-lambda';
 import { serializeError } from 'serialize-error';
 import { getHTMLForErrorPage } from './get-html-for-error-page';
 import { isAuthAction } from './is-auth-action';
@@ -181,7 +182,6 @@ app.use('/api/auth/*', async (c, next) => {
 });
 app.route(API_BASENAME, api);
 
-export default await createHonoServer({
-  app,
-  defaultLogger: false,
-});
+export default process.env.VERCEL
+  ? await createLambdaServer({ app, defaultLogger: false })
+  : await createNodeServer({ app, defaultLogger: false });
