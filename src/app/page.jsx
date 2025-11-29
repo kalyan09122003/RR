@@ -124,8 +124,8 @@ export default function HomePage() {
                 <div className="w-24 h-[2px] bg-gradient-to-r from-[#00D4FF] to-transparent" />
 
                 <p className="text-lg text-gray-300 max-w-md leading-relaxed font-light">
-                  We engineer breakthrough products through strategic design,
-                  advanced development, and measurable outcomes.
+                  Venturemond builds and scales the next generation of ventures and software products
+                  combining product strategy, design, and engineering to turn bold ideas into scalable realities.
                 </p>
               </div>
             </div>
@@ -195,11 +195,10 @@ export default function HomePage() {
           <div className="relative h-[600px]">
             {/* Studio Division */}
             <div
-              className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${
-                activeDivision === 0
+              className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 0
                   ? "left-0 top-0 z-20"
                   : "left-1/4 top-20 z-10"
-              }`}
+                }`}
             >
               <div className="relative h-full p-12 bg-gradient-to-br from-[#00D4FF]/10 to-transparent border border-[#00D4FF]/20 backdrop-blur-xl">
                 <div className="absolute top-6 right-6">
@@ -246,11 +245,10 @@ export default function HomePage() {
 
             {/* SaaS Division */}
             <div
-              className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${
-                activeDivision === 1
+              className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 1
                   ? "right-0 top-0 z-20"
                   : "right-1/4 top-20 z-10"
-              }`}
+                }`}
             >
               <div className="relative h-full p-12 bg-gradient-to-br from-[#8B5CF6]/10 to-transparent border border-[#8B5CF6]/20 backdrop-blur-xl">
                 <div className="absolute top-6 right-6">
@@ -305,9 +303,8 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => setActiveDivision(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    activeDivision === index ? "bg-white" : "bg-white/30"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${activeDivision === index ? "bg-white" : "bg-white/30"
+                    }`}
                 />
               ))}
             </div>
