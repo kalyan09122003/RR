@@ -11,6 +11,7 @@ import { proxy } from 'hono/proxy';
 import { requestId } from 'hono/request-id';
 import { createHonoServer as createNodeServer } from 'react-router-hono-server/node';
 import { createHonoServer as createLambdaServer } from 'react-router-hono-server/aws-lambda';
+import { handle } from 'hono/vercel';
 import { serializeError } from 'serialize-error';
 import { getHTMLForErrorPage } from './get-html-for-error-page';
 import { isAuthAction } from './is-auth-action';
@@ -182,6 +183,13 @@ app.use('/api/auth/*', async (c, next) => {
 });
 app.route(API_BASENAME, api);
 
+if (process.env.VERCEL) {
+  // Initialize the app with React Router middleware using the lambda adapter
+  // We ignore the returned handler because it's for AWS Lambda
+  // We must provide invokeMode to satisfy the type definition
+  await createLambdaServer({ app, defaultLogger: false, invokeMode: 'response' as any });
+}
+
 export default process.env.VERCEL
-  ? await createLambdaServer({ app, defaultLogger: false })
+  ? handle(app)
   : await createNodeServer({ app, defaultLogger: false });
