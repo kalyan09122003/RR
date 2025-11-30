@@ -14,6 +14,7 @@ import {
   Hexagon,
 } from "lucide-react";
 import Header from "./components/Header";
+import logo from "./assets/logo.png";
 
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -196,8 +197,8 @@ export default function HomePage() {
             {/* Studio Division */}
             <div
               className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 0
-                  ? "left-0 top-0 z-20"
-                  : "left-1/4 top-20 z-10"
+                ? "left-0 top-0 z-20"
+                : "left-1/4 top-20 z-10"
                 }`}
             >
               <div className="relative h-full p-12 bg-gradient-to-br from-[#00D4FF]/10 to-transparent border border-[#00D4FF]/20 backdrop-blur-xl">
@@ -246,8 +247,8 @@ export default function HomePage() {
             {/* SaaS Division */}
             <div
               className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 1
-                  ? "right-0 top-0 z-20"
-                  : "right-1/4 top-20 z-10"
+                ? "right-0 top-0 z-20"
+                : "right-1/4 top-20 z-10"
                 }`}
             >
               <div className="relative h-full p-12 bg-gradient-to-br from-[#8B5CF6]/10 to-transparent border border-[#8B5CF6]/20 backdrop-blur-xl">
@@ -468,8 +469,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-16">
           <div className="flex justify-between items-center">
             <div>
-              <div className="text-sm font-bold tracking-[0.2em] mb-2">
-                VENTURE<span className="text-[#00D4FF]">MOND</span>
+              <div className="flex items-center gap-3 mb-2">
+                <img src={logo} alt="Logo" className="h-8 w-auto object-contain" />
+                <div className="text-sm font-bold tracking-[0.2em]">
+                  VENTURE<span className="text-[#00D4FF]">MOND</span>
+                </div>
               </div>
               <div className="text-xs text-gray-500">
                 Engineering bold futures
