@@ -140,9 +140,9 @@ export default function InsightsPage() {
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-12 gap-16">
-            <div className="col-span-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="col-span-1 lg:col-span-8">
               <div className="space-y-8">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full">
                   <Brain className="w-4 h-4 text-[#00D4FF]" />
@@ -152,7 +152,7 @@ export default function InsightsPage() {
                 </div>
 
                 <div className="space-y-6">
-                  <h1 className="text-7xl font-black leading-[0.9] tracking-tight">
+                  <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] tracking-tight">
                     INSIGHTS &
                     <br />
                     <span className="bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
@@ -162,23 +162,23 @@ export default function InsightsPage() {
 
                   <div className="w-32 h-[2px] bg-gradient-to-r from-[#00D4FF] to-transparent" />
 
-                  <p className="text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
+                  <p className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
                     Deep analysis, strategic thinking, and practical insights
                     from building breakthrough products and scaling modern
                     ventures.
                   </p>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full">
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 w-full sm:w-auto">
                     <Search className="w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Search insights..."
-                      className="bg-transparent text-sm text-white placeholder-gray-400 outline-none w-64"
+                      className="bg-transparent text-sm text-white placeholder-gray-400 outline-none w-full sm:w-64"
                     />
                   </div>
-                  <button className="px-6 py-2 border border-white/20 rounded-full text-sm hover:bg-white/5 transition-all">
+                  <button className="px-6 py-2 border border-white/20 rounded-full text-sm hover:bg-white/5 transition-all w-full sm:w-auto">
                     <Filter className="w-4 h-4 inline mr-2" />
                     Filter
                   </button>
@@ -186,7 +186,7 @@ export default function InsightsPage() {
               </div>
             </div>
 
-            <div className="col-span-4">
+            <div className="col-span-1 lg:col-span-4">
               <div className="space-y-8">
                 <div className="text-xs tracking-widest text-gray-500 mb-6">
                   TRENDING TOPICS
@@ -217,17 +217,16 @@ export default function InsightsPage() {
 
       {/* Category Navigation */}
       <section className="py-8 border-y border-white/5 sticky top-20 z-40 bg-[#0A0A0F]/80 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="flex items-center gap-8 overflow-x-auto">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex items-center gap-4 lg:gap-8 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`text-xs tracking-wider whitespace-nowrap py-2 px-4 rounded-full transition-all duration-300 ${
-                  selectedCategory === category
+                className={`text-xs tracking-wider whitespace-nowrap py-2 px-4 rounded-full transition-all duration-300 flex-shrink-0 ${selectedCategory === category
                     ? "bg-white/10 text-white font-medium"
                     : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
+                  }`}
               >
                 {category}
               </button>
@@ -238,19 +237,19 @@ export default function InsightsPage() {
 
       {/* Featured Articles - Magazine Layout */}
       <section className="py-32">
-        <div className="max-w-7xl mx-auto px-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="mb-16">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               FEATURED
             </div>
-            <h2 className="text-4xl font-black">Latest Intelligence</h2>
+            <h2 className="text-4xl lg:text-4xl font-black">Latest Intelligence</h2>
           </div>
 
-          <div className="grid grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Main Featured Article */}
-            <div className="col-span-8">
+            <div className="col-span-1 lg:col-span-8">
               <div
-                className="group relative h-96 overflow-hidden cursor-pointer"
+                className="group relative h-[500px] lg:h-96 overflow-hidden cursor-pointer rounded-2xl border border-white/10"
                 onMouseEnter={() => setHoveredCard(featuredArticles[0]?.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -261,7 +260,7 @@ export default function InsightsPage() {
                   }}
                 />
 
-                <div className="relative z-10 h-full p-12 flex flex-col justify-between bg-gradient-to-t from-[#0A0A0F]/80 to-transparent">
+                <div className="relative z-10 h-full p-8 lg:p-12 flex flex-col justify-between bg-gradient-to-t from-[#0A0A0F]/80 to-transparent">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <div
@@ -278,17 +277,17 @@ export default function InsightsPage() {
                       </div>
                     </div>
 
-                    <h3 className="text-4xl font-bold leading-tight group-hover:scale-105 transition-transform duration-300 origin-left">
+                    <h3 className="text-3xl lg:text-4xl font-bold leading-tight group-hover:scale-105 transition-transform duration-300 origin-left">
                       {featuredArticles[0]?.title}
                     </h3>
 
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-gray-300 text-base lg:text-lg leading-relaxed">
                       {featuredArticles[0]?.excerpt}
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6 text-sm text-gray-400">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+                    <div className="flex flex-wrap items-center gap-4 lg:gap-6 text-sm text-gray-400">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4" />
                         {featuredArticles[0]?.date}
@@ -310,11 +309,11 @@ export default function InsightsPage() {
             </div>
 
             {/* Secondary Featured */}
-            <div className="col-span-4 space-y-8">
+            <div className="col-span-1 lg:col-span-4 space-y-8">
               {featuredArticles.slice(1).map((article) => (
                 <div
                   key={article.id}
-                  className="group relative p-8 bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer"
+                  className="group relative p-8 bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer rounded-2xl"
                   onMouseEnter={() => setHoveredCard(article.id)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -367,7 +366,7 @@ export default function InsightsPage() {
 
       {/* All Articles - Masonry Grid */}
       <section className="py-32 bg-gradient-to-b from-transparent to-[#00D4FF]/5">
-        <div className="max-w-7xl mx-auto px-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="mb-16">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               ALL INSIGHTS
@@ -379,9 +378,8 @@ export default function InsightsPage() {
             {regularArticles.map((article, index) => (
               <div
                 key={article.id}
-                className={`group relative bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer overflow-hidden ${
-                  index % 3 === 0 ? "md:row-span-2" : ""
-                }`}
+                className={`group relative bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer overflow-hidden ${index % 3 === 0 ? "md:row-span-2" : ""
+                  }`}
                 onMouseEnter={() => setHoveredCard(article.id)}
                 onMouseLeave={() => setHoveredCard(null)}
                 style={{
@@ -411,9 +409,8 @@ export default function InsightsPage() {
                     </div>
 
                     <h3
-                      className={`font-bold leading-tight group-hover:text-white transition-colors ${
-                        index % 3 === 0 ? "text-xl" : "text-lg"
-                      }`}
+                      className={`font-bold leading-tight group-hover:text-white transition-colors ${index % 3 === 0 ? "text-xl" : "text-lg"
+                        }`}
                     >
                       {article.title}
                     </h3>
@@ -445,16 +442,16 @@ export default function InsightsPage() {
 
       {/* Newsletter CTA */}
       <section className="py-32">
-        <div className="max-w-4xl mx-auto px-16 text-center">
-          <div className="p-16 bg-gradient-to-br from-[#00D4FF]/20 via-[#8B5CF6]/20 to-[#EC4899]/20 border border-white/10 rounded-3xl">
+        <div className="max-w-4xl mx-auto px-6 lg:px-16 text-center">
+          <div className="p-8 lg:p-16 bg-gradient-to-br from-[#00D4FF]/20 via-[#8B5CF6]/20 to-[#EC4899]/20 border border-white/10 rounded-3xl">
             <Lightbulb className="w-16 h-16 mx-auto mb-8 text-[#00D4FF]" />
-            <h2 className="text-5xl font-black mb-6">Stay Ahead</h2>
-            <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto">
+            <h2 className="text-4xl lg:text-5xl font-black mb-6">Stay Ahead</h2>
+            <p className="text-lg lg:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto">
               Get our latest insights delivered weekly. Deep analysis, strategic
               frameworks, and practical advice for modern builders.
             </p>
 
-            <div className="flex gap-4 max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -470,18 +467,18 @@ export default function InsightsPage() {
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex justify-between items-center flex-col md:flex-row gap-8 md:gap-0">
             <div>
-              <div className="text-sm font-bold tracking-[0.2em] mb-2">
+              <div className="text-sm font-bold tracking-[0.2em] mb-2 text-center md:text-left">
                 VENTURE<span className="text-[#00D4FF]">MOND</span>
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 text-center md:text-left">
                 Strategic insights for modern builders
               </div>
             </div>
 
-            <div className="flex gap-12">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               <a
                 href="/studio"
                 className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
@@ -508,7 +505,7 @@ export default function InsightsPage() {
 
           <div className="mt-12 pt-8 border-t border-white/5 text-center">
             <div className="text-xs text-gray-600">
-              © 2025 Venturemond. Strategic insights for modern builders.
+              © 2025 Venturemond. All rights reserved.
             </div>
           </div>
         </div>

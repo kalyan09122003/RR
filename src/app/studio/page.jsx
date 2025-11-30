@@ -35,6 +35,10 @@ export default function StudioPage() {
         "Product-Market Fit Validation",
         "Technical Feasibility Assessment",
       ],
+      metrics: [
+        { label: "Interviews", value: "50+" },
+        { label: "Markets", value: "10+" },
+      ],
     },
     {
       phase: "02",
@@ -48,6 +52,10 @@ export default function StudioPage() {
         "Full-Stack Development",
         "API Architecture & Database Design",
         "Core Feature Implementation",
+      ],
+      metrics: [
+        { label: "Prototypes", value: "48h" },
+        { label: "Sprints", value: "2-4" },
       ],
     },
     {
@@ -63,6 +71,10 @@ export default function StudioPage() {
         "Interactive Prototyping",
         "Usability Testing & Optimization",
       ],
+      metrics: [
+        { label: "Design Sprints", value: "2" },
+        { label: "Usability Tests", value: "10+" },
+      ],
     },
     {
       phase: "04",
@@ -77,92 +89,88 @@ export default function StudioPage() {
         "Analytics Implementation",
         "Performance Optimization",
       ],
+      metrics: [
+        { label: "Channels", value: "SEO,PPC,PR" },
+        { label: "Growth Experiments", value: "5+" },
+      ],
     },
   ];
 
   const techStack = [
-    { name: "Next.js", type: "Frontend", level: "Expert" },
-    { name: "React", type: "Frontend", level: "Expert" },
-    { name: "Node.js", type: "Backend", level: "Expert" },
-    { name: "Python", type: "Backend", level: "Expert" },
-    { name: "TypeScript", type: "Language", level: "Expert" },
-    { name: "PostgreSQL", type: "Database", level: "Expert" },
-    { name: "MongoDB", type: "Database", level: "Expert" },
-    { name: "AWS", type: "Cloud", level: "Expert" },
-    { name: "Firebase", type: "Platform", level: "Expert" },
-    { name: "Vercel", type: "Deployment", level: "Expert" },
+    { name: "Next.js", type: "Frontend", desc: "SSR + static" },
+    { name: "React", type: "Frontend", desc: "UI + state" },
+    { name: "Node.js", type: "Backend", desc: "API servers" },
+    { name: "Python", type: "Backend", desc: "ML & workers" },
+    { name: "TypeScript", type: "Language", desc: "Type safety" },
+    { name: "PostgreSQL", type: "Database", desc: "Relational" },
+    { name: "MongoDB", type: "Database", desc: "Document store" },
+    { name: "AWS", type: "Cloud", desc: "Infra & services" },
+    { name: "Firebase", type: "Platform", desc: "Auth & realtime" },
+    { name: "Vercel", type: "Deployment", desc: "Hosting" },
   ];
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // auto-play stories
   useEffect(() => {
-    if (isPlaying) {
-      const interval = setInterval(() => {
-        setCurrentStory((prev) => (prev + 1) % stories.length);
-      }, 5000);
-      return () => clearInterval(interval);
-    }
+    if (!isPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentStory((prev) => (prev + 1) % stories.length);
+    }, 5000);
+    return () => clearInterval(interval);
   }, [isPlaying, stories.length]);
 
-  const nextStory = () => {
-    setCurrentStory((prev) => (prev + 1) % stories.length);
-  };
+  const goPrev = () => setCurrentStory((prev) => (prev - 1 + stories.length) % stories.length);
+  const goNext = () => setCurrentStory((prev) => (prev + 1) % stories.length);
+  const togglePlay = () => setIsPlaying((p) => !p);
 
-  const prevStory = () => {
-    setCurrentStory((prev) => (prev - 1 + stories.length) % stories.length);
-  };
+  // convenience
+  const active = stories[currentStory];
 
   return (
     <div className="bg-[#0A0A0F] text-white font-inter overflow-x-hidden">
       <Header activeLink="/studio" />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute right-0 top-0 w-1/3 h-full opacity-10"
-          style={{
-            background: `linear-gradient(45deg, ${stories[currentStory]?.color || "#00D4FF"} 0%, transparent 50%)`,
-            transform: `translateX(${scrollY * 0.1}px)`,
-          }}
-        />
+      <section className="relative h-screen flex items-center overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-[#00D4FF]/20 rounded-full blur-[100px]" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#8B5CF6]/20 rounded-full blur-[100px]" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-12 gap-12 items-center min-h-[70vh]">
-            <div className="col-span-8">
-              <div className="space-y-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="col-span-1 lg:col-span-7">
+              <div className="space-y-8 lg:space-y-10">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full">
-                  <Code2 className="w-4 h-4 text-[#00D4FF]" />
-                  <span className="text-xs tracking-widest">
-                    VENTUREMOND STUDIO
-                  </span>
+                  <Lightbulb className="w-4 h-4 text-[#00D4FF]" />
+                  <span className="text-xs tracking-widest">VENTURE STUDIO</span>
                 </div>
 
-                <h1 className="text-7xl font-black leading-[0.9] tracking-tight">
-                  VENTURE
+                <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] tracking-tight">
+                  WE BUILD
                   <br />
-                  <span className="bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] bg-clip-text text-transparent">
-                    ENGINEERING
+                  <span className="bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
+                    UNICORNS
                   </span>
                 </h1>
 
-                <div className="w-32 h-[2px] bg-gradient-to-r from-[#00D4FF] to-transparent" />
-
-                <p className="text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
-                  We engineer breakthrough products from concept to scale.
-                  Full-stack development, strategic design, and growth execution
-                  for founders who think big.
+                <p className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
+                  A new breed of venture studio. We combine capital, engineering,
+                  and design to build category-defining companies from scratch.
                 </p>
 
-                <div className="flex gap-6">
+                <div className="flex flex-col sm:flex-row gap-6">
                   <a
                     href="/contact"
-                    className="px-8 py-4 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#00D4FF]/25 transition-all duration-300"
+                    className="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-colors"
                   >
-                    START VENTURE
+                    START A VENTURE
                   </a>
                   <button className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300">
                     VIEW PORTFOLIO
@@ -171,24 +179,14 @@ export default function StudioPage() {
               </div>
             </div>
 
-            <div className="col-span-4">
+            <div className="col-span-1 lg:col-span-5 hidden lg:block">
               <div className="relative">
-                <div className="space-y-6">
-                  <div className="text-xs tracking-widest text-gray-500">
-                    CAPABILITIES
-                  </div>
-                  <div className="space-y-4">
-                    {[
-                      "Research & Validation",
-                      "MVP Development",
-                      "Product Design",
-                      "Go-to-Market",
-                    ].map((capability, index) => (
-                      <div key={index} className="flex items-center gap-4">
-                        <div className="w-2 h-2 rounded-full bg-[#00D4FF]" />
-                        <div className="text-sm font-medium">{capability}</div>
-                      </div>
-                    ))}
+                <div className="w-full aspect-square relative">
+                  <div className="absolute inset-0 border border-white/10 rounded-full animate-[spin_10s_linear_infinite]" />
+                  <div className="absolute inset-8 border border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                  <div className="absolute inset-16 border border-white/10 rounded-full animate-[spin_20s_linear_infinite]" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Rocket className="w-24 h-24 text-white/20" />
                   </div>
                 </div>
               </div>
@@ -197,180 +195,115 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Interactive Story Section */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-16">
+      {/* Interactive Story */}
+      <section className="py-32 bg-[#0A0A0F]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="mb-20">
-            <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
-              OUR PROCESS
-            </div>
-            <h2 className="text-5xl font-black">Strategic Storytelling</h2>
+            <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">OUR PROCESS</div>
+            <h2 className="text-4xl lg:text-6xl font-black">From Zero to One</h2>
           </div>
 
-          <div className="relative">
-            {/* Story Display */}
-            <div className="grid grid-cols-12 gap-16 items-center min-h-[600px]">
-              <div className="col-span-7">
-                <div className="space-y-12">
-                  <div>
-                    <div className="flex items-center gap-6 mb-8">
-                      <div
-                        className="text-8xl font-black opacity-20"
-                        style={{ color: stories[currentStory].color }}
-                      >
-                        {stories[currentStory].phase}
-                      </div>
-                      <div className="space-y-2">
-                        <div
-                          className="text-xs tracking-widest font-bold"
-                          style={{ color: stories[currentStory].color }}
-                        >
-                          {stories[currentStory].title}
-                        </div>
-                        <div className="text-2xl font-bold">
-                          {stories[currentStory].subtitle}
-                        </div>
-                      </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[600px]">
+            <div className="col-span-1 lg:col-span-5 order-2 lg:order-1">
+              <div className="space-y-12">
+                <div className="space-y-6">
+                  <div className="text-6xl lg:text-8xl font-black text-white/5">{active.phase}</div>
+                  <h3 className="text-3xl lg:text-4xl font-bold">{active.title}</h3>
+                  <p className="text-lg text-gray-400 leading-relaxed">{active.description}</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {active.metrics?.map((metric, idx) => (
+                    <div key={idx} className="p-4 bg-white/5 border border-white/10">
+                      <div className="text-2xl font-bold text-[#00D4FF]">{metric.value}</div>
+                      <div className="text-xs text-gray-500">{metric.label}</div>
                     </div>
+                  ))}
+                </div>
 
-                    <p className="text-lg text-gray-300 leading-relaxed mb-8">
-                      {stories[currentStory].description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    {stories[currentStory].details.map((detail, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center gap-4 group"
-                      >
-                        <div
-                          className="w-1 h-1 rounded-full group-hover:w-4 group-hover:h-4 transition-all duration-300"
-                          style={{
-                            backgroundColor: stories[currentStory].color,
-                          }}
-                        />
-                        <div className="text-sm text-gray-400 group-hover:text-white transition-colors">
-                          {detail}
-                        </div>
-                      </div>
+                <div className="flex items-center justify-between mt-16">
+                  <div className="flex gap-2">
+                    {stories.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentStory(idx)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${currentStory === idx ? "bg-[#00D4FF]" : "bg-white/20"}`}
+                        aria-label={`Go to step ${idx + 1}`}
+                      />
                     ))}
                   </div>
-                </div>
-              </div>
 
-              <div className="col-span-5">
-                <div className="relative">
-                  {/* Visual Element */}
-                  <div className="w-80 h-80 relative mx-auto">
-                    <div
-                      className="absolute inset-0 rounded-full opacity-20 blur-xl"
-                      style={{ backgroundColor: stories[currentStory].color }}
-                    />
-                    <div className="absolute inset-8 border border-white/10 rounded-full backdrop-blur-sm" />
-                    <div
-                      className="absolute inset-16 border rounded-full"
-                      style={{ borderColor: stories[currentStory].color }}
-                    />
-                    <div
-                      className="absolute inset-24 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: stories[currentStory].color }}
-                    >
-                      <div className="text-6xl font-black text-black">
-                        {stories[currentStory].phase}
-                      </div>
-                    </div>
+                  <div className="flex gap-4">
+                    <button onClick={goPrev} className="p-3 border border-white/10 hover:bg-white/5 rounded-full transition-all" aria-label="Previous">
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+
+                    <button onClick={goNext} className="p-3 border border-white/10 hover:bg-white/5 rounded-full transition-all" aria-label="Next">
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+
+                    <button onClick={togglePlay} className="p-3 border border-white/10 hover:bg-white/5 rounded-full transition-all" aria-label={isPlaying ? "Pause" : "Play"}>
+                      {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Story Controls */}
-            <div className="flex items-center justify-between mt-16">
-              <div className="flex items-center gap-6">
-                <button
-                  onClick={prevStory}
-                  className="p-3 border border-white/20 rounded-full hover:bg-white/5 transition-all"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
+            <div className="col-span-1 lg:col-span-7 order-1 lg:order-2">
+              <div className="relative h-[400px] lg:h-[600px] bg-gradient-to-br from-[#00D4FF]/5 to-[#8B5CF6]/5 border border-white/10 rounded-3xl overflow-hidden p-8 lg:p-12">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay" />
+                <div className="relative z-10 h-full flex flex-col justify-between">
+                  <div className="flex justify-between items-start">
+                    <div className="p-4 bg-black/50 backdrop-blur-md rounded-xl border border-white/10">
+                      <Code2 className="w-8 h-8 text-[#00D4FF]" />
+                    </div>
+                    <div className="px-4 py-2 bg-[#00D4FF]/20 text-[#00D4FF] text-xs font-bold rounded-full">ACTIVE PHASE</div>
+                  </div>
 
-                <button
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="p-3 border border-white/20 rounded-full hover:bg-white/5 transition-all"
-                >
-                  {isPlaying ? (
-                    <Pause className="w-5 h-5" />
-                  ) : (
-                    <Play className="w-5 h-5" />
-                  )}
-                </button>
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-bold mb-2">{active.subtitle}</h3>
+                    <p className="text-gray-300">{active.description}</p>
 
-                <button
-                  onClick={nextStory}
-                  className="p-3 border border-white/20 rounded-full hover:bg-white/5 transition-all"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+                    <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {active.details.map((d, i) => (
+                        <li key={i} className="text-sm text-gray-300">• {d}</li>
+                      ))}
+                    </ul>
+                  </div>
 
-              <div className="flex gap-2">
-                {stories.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentStory(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentStory === index ? "bg-white w-8" : "bg-white/30"
-                    }`}
-                  />
-                ))}
+                  <div className="flex justify-between items-center mt-6">
+                    <div className="text-sm text-gray-400">{active.phase} • {active.title}</div>
+                    <div className="flex gap-2">
+                      <button className="px-3 py-2 bg-white/5 rounded text-sm">Learn More</button>
+                      <a href="/contact" className="px-3 py-2 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black rounded text-sm font-semibold">Work with us</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* Horizontal Scrolling Tech Stack */}
-      <section className="py-32 overflow-x-auto">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="mb-16">
-            <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
-              TECHNOLOGY
-            </div>
-            <h2 className="text-5xl font-black">Modern Stack</h2>
-          </div>
+      {/* Tech Stack - Horizontal Scroll */}
+      <section className="py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 mb-16">
+          <h2 className="text-4xl lg:text-6xl font-black mb-8">Built With Speed</h2>
+          <p className="text-gray-400 max-w-2xl">We use a modern, opinionated stack to ship products in weeks, not months.</p>
+        </div>
 
-          <div className="flex gap-6 pb-4" style={{ width: "max-content" }}>
-            {techStack.map((tech, index) => (
-              <div
-                key={index}
-                onMouseEnter={() => setHoveredService(index)}
-                onMouseLeave={() => setHoveredService(null)}
-                className="min-w-[280px] h-48 p-8 bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#00D4FF]/50 transition-all duration-300"
-              >
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold">{tech.name}</div>
-                    <div className="text-xs px-3 py-1 bg-[#00D4FF]/20 text-[#00D4FF] rounded-full">
-                      {tech.type}
-                    </div>
-                  </div>
+        <div className="relative w-full">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0A0F] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0A0F] to-transparent z-10" />
 
-                  <div className="space-y-3">
-                    <div className="text-sm text-gray-400">
-                      Proficiency Level
-                    </div>
-                    <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] transition-all duration-1000"
-                        style={{
-                          width: hoveredService === index ? "100%" : "90%",
-                        }}
-                      />
-                    </div>
-                    <div className="text-xs text-gray-500">{tech.level}</div>
-                  </div>
-                </div>
+          <div className="flex gap-6 pb-4 overflow-x-auto px-6 lg:px-16 no-scrollbar">
+            {techStack.map((tech, idx) => (
+              <div key={idx} className="min-w-[240px] h-48 p-6 bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#00D4FF]/50 transition-all duration-300 flex-shrink-0">
+                <div className="text-lg font-bold mb-2">{tech.name}</div>
+                <div className="text-sm text-gray-400">{tech.type}</div>
+                <div className="text-xs text-gray-500 mt-2">{tech.desc}</div>
               </div>
             ))}
           </div>
@@ -380,31 +313,21 @@ export default function StudioPage() {
       {/* Split CTA Section */}
       <section className="py-32">
         <div className="max-w-7xl mx-auto px-16">
-          <div className="grid grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
               <div className="space-y-8">
                 <div>
-                  <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
-                    READY TO BUILD
-                  </div>
-                  <h2 className="text-5xl font-black leading-tight">
+                  <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">READY TO BUILD</div>
+                  <h2 className="text-4xl md:text-5xl font-black leading-tight">
                     Let's Engineer
                     <br />
-                    <span className="bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] bg-clip-text text-transparent">
-                      Your Future
-                    </span>
+                    <span className="bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] bg-clip-text text-transparent">Your Future</span>
                   </h2>
                 </div>
 
-                <p className="text-gray-400 text-lg leading-relaxed">
-                  Transform your vision into a scalable venture. Strategic
-                  engineering meets bold execution.
-                </p>
+                <p className="text-gray-400 text-lg leading-relaxed">Transform your vision into a scalable venture. Strategic engineering meets bold execution.</p>
 
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#00D4FF]/25 transition-all duration-300"
-                >
+                <a href="/contact" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black font-bold text-sm tracking-wider hover:shadow-lg transition-all duration-300">
                   START YOUR VENTURE
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
@@ -413,17 +336,11 @@ export default function StudioPage() {
 
             <div className="flex items-end justify-end">
               <div className="text-right space-y-6">
-                <div className="text-6xl font-black text-white/10">STUDIO</div>
+                <div className="text-4xl md:text-6xl font-black text-white/10">STUDIO</div>
                 <div className="space-y-2">
-                  <div className="text-sm text-gray-400">
-                    48 Hour Prototypes
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    100+ Products Launched
-                  </div>
-                  <div className="text-sm text-gray-400">
-                    12x Average Growth
-                  </div>
+                  <div className="text-sm text-gray-400">48 Hour Prototypes</div>
+                  <div className="text-sm text-gray-400">100+ Products Launched</div>
+                  <div className="text-sm text-gray-400">12x Average Growth</div>
                 </div>
               </div>
             </div>
@@ -433,46 +350,23 @@ export default function StudioPage() {
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex justify-between items-center flex-col md:flex-row gap-8 md:gap-0">
             <div>
-              <div className="text-sm font-bold tracking-[0.2em] mb-2">
-                VENTURE<span className="text-[#00D4FF]">MOND</span>
-              </div>
-              <div className="text-xs text-gray-500">
-                Engineering bold futures
-              </div>
+              <div className="text-sm font-bold tracking-[0.2em] mb-2 text-center md:text-left">VENTURE<span className="text-[#00D4FF]">MOND</span></div>
+              <div className="text-xs text-gray-500 text-center md:text-left">Building the future, one venture at a time.</div>
             </div>
 
-            <div className="flex gap-12">
-              <a href="/studio" className="text-xs tracking-wider text-white">
-                Studio
-              </a>
-              <a
-                href="/saas"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                SaaS
-              </a>
-              <a
-                href="/insights"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Insights
-              </a>
-              <a
-                href="/careers"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Careers
-              </a>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+              <a href="/studio" className="text-xs tracking-wider text-white">Studio</a>
+              <a href="/saas" className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors">SaaS</a>
+              <a href="/insights" className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors">Insights</a>
+              <a href="/careers" className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors">Careers</a>
             </div>
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5 text-center">
-            <div className="text-xs text-gray-600">
-              © 2025 Venturemond. Engineering the future.
-            </div>
+            <div className="text-xs text-gray-600">© 2025 Venturemond. All rights reserved.</div>
           </div>
         </div>
       </footer>

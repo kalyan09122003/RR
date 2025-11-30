@@ -188,18 +188,18 @@ export default function ContactPage() {
       <Header activeLink="/contact" />
 
       <section className="pt-20 min-h-screen">
-        <div className="grid grid-cols-12 min-h-screen">
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-screen">
           {/* Left side */}
-          <div className="col-span-5 bg-gradient-to-br from-[#00D4FF]/10 to-[#8B5CF6]/10 p-16 flex flex-col justify-center relative overflow-hidden">
+          <div className="col-span-1 lg:col-span-5 bg-gradient-to-br from-[#00D4FF]/10 to-[#8B5CF6]/10 p-6 lg:p-16 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute inset-0 opacity-20" style={{ background: `radial-gradient(circle at ${mousePosition.x * 0.5}px ${mousePosition.y * 0.5}px, #00D4FF 0%, transparent 50%)` }} />
-            <div className="relative z-10 space-y-16">
+            <div className="relative z-10 space-y-12 lg:space-y-16">
               <div>
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8">
                   <MessageCircle className="w-4 h-4 text-[#00D4FF]" />
                   <span className="text-xs tracking-widest">GET IN TOUCH</span>
                 </div>
 
-                <h1 className="text-6xl font-black leading-[0.9] tracking-tight mb-8">
+                <h1 className="text-4xl lg:text-6xl font-black leading-[0.9] tracking-tight mb-8">
                   LET'S BUILD
                   <br />
                   <span className="bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] bg-clip-text text-transparent">TOGETHER</span>
@@ -207,7 +207,7 @@ export default function ContactPage() {
 
                 <div className="w-32 h-[2px] bg-gradient-to-r from-[#00D4FF] to-transparent mb-8" />
 
-                <p className="text-xl text-gray-300 leading-relaxed font-light">Ready to turn your vision into reality? Let's discuss how we can help you build breakthrough products and scale your venture.</p>
+                <p className="text-lg lg:text-xl text-gray-300 leading-relaxed font-light">Ready to turn your vision into reality? Let's discuss how we can help you build breakthrough products and scale your venture.</p>
               </div>
 
               <div className="space-y-8">
@@ -230,12 +230,12 @@ export default function ContactPage() {
           </div>
 
           {/* Right side - form */}
-          <div className="col-span-7 p-16 flex items-center">
+          <div className="col-span-1 lg:col-span-7 p-6 lg:p-16 flex items-center">
             <div className="w-full max-w-2xl">
               <form onSubmit={handleSubmit} className="space-y-12">
                 <div className="space-y-8">
                   <div className="space-y-6">
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-3">
                         <label className="text-sm text-gray-400 tracking-wider">NAME *</label>
                         <input type="text" name="name" required value={formData.name} onChange={handleInputChange} className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 outline-none focus:border-[#00D4FF] transition-colors" placeholder="Your name" />
@@ -257,7 +257,7 @@ export default function ContactPage() {
                   <div className="space-y-4">
                     <label className="text-sm text-gray-400 tracking-wider">WHAT DO YOU NEED? *</label>
 
-                    <div className="grid grid-cols-2 gap-4" role="group" aria-label="Project types">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4" role="group" aria-label="Project types">
                       {projectTypes.map((type) => {
                         const Icon = type.icon;
                         const selected = selectedProjectTypes.includes(type.value);
@@ -332,7 +332,7 @@ export default function ContactPage() {
                   </div>
 
                   {/* Budget & Timeline */}
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-3">
                       <label className="text-sm text-gray-400 tracking-wider">BUDGET RANGE</label>
                       <select
@@ -388,13 +388,13 @@ export default function ContactPage() {
 
       <footer className="border-t border-white/5 py-16">
         <div className="max-w-7xl mx-auto px-16">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-col md:flex-row gap-8 md:gap-0">
             <div>
-              <div className="text-sm font-bold tracking-[0.2em] mb-2">VENTURE<span className="text-[#00D4FF]">MOND</span></div>
-              <div className="text-xs text-gray-500">Let's build the future together</div>
+              <div className="text-sm font-bold tracking-[0.2em] mb-2 text-center md:text-left">VENTURE<span className="text-[#00D4FF]">MOND</span></div>
+              <div className="text-xs text-gray-500 text-center md:text-left">Let's build the future together</div>
             </div>
 
-            <div className="flex gap-12">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               <a href="/studio" className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors">Studio</a>
               <a href="/saas" className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors">SaaS</a>
               <a href="/insights" className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors">Insights</a>

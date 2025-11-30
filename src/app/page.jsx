@@ -84,20 +84,20 @@ export default function HomePage() {
       {/* Experimental Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Side Typography */}
-        <div className="absolute left-8 top-1/2 transform -translate-y-1/2 -rotate-90 origin-center z-20">
+        <div className="hidden md:block absolute left-8 top-1/2 transform -translate-y-1/2 -rotate-90 origin-center z-20">
           <div className="text-xs tracking-[0.3em] text-gray-500 font-light">
             VENTURE MOND
           </div>
         </div>
 
         {/* Main Content Area */}
-        <div className="w-full max-w-7xl mx-auto px-16 pt-32">
-          <div className="grid grid-cols-12 gap-8 items-center">
+        <div className="w-full max-w-7xl mx-auto px-6 pt-24 md:px-16 md:pt-32">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             {/* Left Column - Main Headline */}
-            <div className="col-span-7">
+            <div className="col-span-1 md:col-span-7">
               <div className="space-y-8">
                 <div className="overflow-hidden">
-                  <h1 className="text-[5.5rem] font-black leading-[0.9] tracking-tight">
+                  <h1 className="text-5xl md:text-[5.5rem] font-black leading-[0.9] tracking-tight">
                     <div className="translate-y-0 animate-slideUp">BOLD</div>
                     <div
                       className="translate-y-0 animate-slideUp"
@@ -132,7 +132,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Column - Interactive Metrics */}
-            <div className="col-span-5 relative">
+            <div className="col-span-1 md:col-span-5 relative mt-12 md:mt-0">
               <div className="space-y-12">
                 <div className="relative">
                   <div className="text-6xl font-black text-white/10">01</div>
@@ -168,7 +168,7 @@ export default function HomePage() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
+          <div className="absolute bottom-8 md:bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4">
             <div className="text-xs tracking-widest text-gray-500">EXPLORE</div>
             <ArrowDown className="w-4 h-4 text-[#00D4FF] animate-bounce" />
           </div>
@@ -184,24 +184,24 @@ export default function HomePage() {
       </section>
 
       {/* Floating Division Showcase */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="mb-24">
+      <section className="relative py-16 md:py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="mb-12 md:mb-24">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               TWO DIVISIONS
             </div>
-            <h2 className="text-5xl font-black">ONE MISSION</h2>
+            <h2 className="text-4xl md:text-5xl font-black">ONE MISSION</h2>
           </div>
 
-          <div className="relative h-[600px]">
+          <div className="relative h-auto md:h-[600px] flex flex-col md:block gap-8">
             {/* Studio Division */}
             <div
-              className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 0
-                ? "left-0 top-0 z-20"
-                : "left-1/4 top-20 z-10"
+              className={`relative md:absolute w-full md:w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 0
+                ? "md:left-0 md:top-0 z-20"
+                : "md:left-1/4 md:top-20 z-10"
                 }`}
             >
-              <div className="relative h-full p-12 bg-gradient-to-br from-[#00D4FF]/10 to-transparent border border-[#00D4FF]/20 backdrop-blur-xl">
+              <div className="relative h-full p-8 md:p-12 bg-gradient-to-br from-[#00D4FF]/10 to-transparent border border-[#00D4FF]/20 backdrop-blur-xl">
                 <div className="absolute top-6 right-6">
                   <div className="w-16 h-16 rounded-full bg-[#00D4FF]/20 flex items-center justify-center">
                     <Code2 className="w-8 h-8 text-[#00D4FF]" />
@@ -246,12 +246,12 @@ export default function HomePage() {
 
             {/* SaaS Division */}
             <div
-              className={`absolute w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 1
-                ? "right-0 top-0 z-20"
-                : "right-1/4 top-20 z-10"
+              className={`relative md:absolute w-full md:w-[500px] h-[400px] transition-all duration-1000 ${activeDivision === 1
+                ? "md:right-0 md:top-0 z-20"
+                : "md:right-1/4 md:top-20 z-10"
                 }`}
             >
-              <div className="relative h-full p-12 bg-gradient-to-br from-[#8B5CF6]/10 to-transparent border border-[#8B5CF6]/20 backdrop-blur-xl">
+              <div className="relative h-full p-8 md:p-12 bg-gradient-to-br from-[#8B5CF6]/10 to-transparent border border-[#8B5CF6]/20 backdrop-blur-xl">
                 <div className="absolute top-6 right-6">
                   <div className="w-16 h-16 rounded-full bg-[#8B5CF6]/20 flex items-center justify-center">
                     <Sparkles className="w-8 h-8 text-[#8B5CF6]" />
@@ -299,7 +299,7 @@ export default function HomePage() {
             </div>
 
             {/* Progress Indicators */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-3">
+            <div className="hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 gap-3">
               {[0, 1].map((index) => (
                 <button
                   key={index}
@@ -314,20 +314,20 @@ export default function HomePage() {
       </section>
 
       {/* Diagonal Process Timeline */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/5 via-transparent to-[#8B5CF6]/5 transform -skew-y-2" />
 
-        <div className="relative max-w-7xl mx-auto px-16">
-          <div className="mb-20">
+        <div className="relative max-w-7xl mx-auto px-6 md:px-16">
+          <div className="mb-12 md:mb-20">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               METHODOLOGY
             </div>
-            <h2 className="text-5xl font-black">Strategic Process</h2>
+            <h2 className="text-4xl md:text-5xl font-black">Strategic Process</h2>
           </div>
 
           <div className="relative">
             {/* Diagonal Timeline Line */}
-            <div className="absolute left-0 top-0 w-full h-full">
+            <div className="hidden md:block absolute left-0 top-0 w-full h-full">
               <svg
                 className="w-full h-full"
                 viewBox="0 0 1200 400"
@@ -356,7 +356,7 @@ export default function HomePage() {
               </svg>
             </div>
 
-            <div className="grid grid-cols-5 gap-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
               {[
                 {
                   title: "DISCOVER",
@@ -387,10 +387,10 @@ export default function HomePage() {
                 <div key={index} className="group">
                   <div className="relative mb-8">
                     <div
-                      className="w-4 h-4 rounded-full mx-auto mb-4 group-hover:scale-150 transition-transform duration-300"
+                      className="w-4 h-4 rounded-full mx-auto md:mx-auto mb-4 group-hover:scale-150 transition-transform duration-300"
                       style={{ backgroundColor: step.color }}
                     />
-                    <div className="text-center">
+                    <div className="text-left md:text-center">
                       <div
                         className="text-xs tracking-widest font-bold mb-2"
                         style={{ color: step.color }}
@@ -410,16 +410,16 @@ export default function HomePage() {
       </section>
 
       {/* Asymmetric CTA Section */}
-      <section className="py-32">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="grid grid-cols-3 gap-12 items-end">
-            <div className="col-span-2">
+      <section className="py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-end">
+            <div className="col-span-1 md:col-span-2">
               <div className="space-y-8">
                 <div>
                   <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
                     READY TO BEGIN
                   </div>
-                  <h2 className="text-6xl font-black leading-tight">
+                  <h2 className="text-4xl md:text-6xl font-black leading-tight">
                     Let's Engineer
                     <br />
                     <span className="bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] bg-clip-text text-transparent">
@@ -433,16 +433,16 @@ export default function HomePage() {
                   strategic engineering and design excellence.
                 </p>
 
-                <div className="flex gap-6">
+                <div className="flex flex-col sm:flex-row gap-6">
                   <a
                     href="/contact"
-                    className="px-8 py-4 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#00D4FF]/25 transition-all duration-300"
+                    className="px-8 py-4 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#00D4FF]/25 transition-all duration-300 text-center"
                   >
                     START PROJECT
                   </a>
                   <a
                     href="/insights"
-                    className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300"
+                    className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300 text-center"
                   >
                     VIEW INSIGHTS
                   </a>
@@ -450,7 +450,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative hidden md:block">
               <div className="w-64 h-64 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/20 to-[#8B5CF6]/20 rounded-full blur-xl" />
                 <div className="absolute inset-8 border border-white/10 rounded-full backdrop-blur-sm" />
@@ -466,8 +466,8 @@ export default function HomePage() {
 
       {/* Minimal Footer */}
       <footer className="border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <img src={logo} alt="Logo" className="h-8 w-auto object-contain" />
@@ -475,12 +475,12 @@ export default function HomePage() {
                   VENTURE<span className="text-[#00D4FF]">MOND</span>
                 </div>
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 text-center md:text-left">
                 Engineering bold futures
               </div>
             </div>
 
-            <div className="flex gap-12">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               <a
                 href="/studio"
                 className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"

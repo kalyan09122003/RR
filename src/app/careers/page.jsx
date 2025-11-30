@@ -172,7 +172,7 @@ export default function CareersPage() {
           }}
         />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-8 md:px-16 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-6 lg:px-16 text-center relative z-10">
           <div className="space-y-8 sm:space-y-12">
             <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/5 border border-white/10 rounded-full">
               <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-[#EC4899]" />
@@ -210,7 +210,7 @@ export default function CareersPage() {
 
       {/* Culture Values */}
       <section className="py-16 sm:py-24 md:py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="mb-12 sm:mb-16 md:mb-20 text-center">
             <div className="text-[10px] sm:text-xs tracking-[0.3em] text-gray-500 mb-3 sm:mb-4">
               OUR VALUES
@@ -256,7 +256,7 @@ export default function CareersPage() {
 
       {/* Life at Venturemond */}
       <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-transparent to-[#EC4899]/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="mb-12 sm:mb-16 md:mb-20 text-center">
             <div className="text-[10px] sm:text-xs tracking-[0.3em] text-gray-500 mb-3 sm:mb-4">
               LIFE HERE
@@ -285,7 +285,7 @@ export default function CareersPage() {
 
       {/* Open Positions */}
       <section className="py-16 sm:py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-4 sm:px-8 md:px-16">
+        <div className="max-w-5xl mx-auto px-6 lg:px-16">
           <div className="mb-12 sm:mb-16 md:mb-20 text-center">
             <div className="text-[10px] sm:text-xs tracking-[0.3em] text-gray-500 mb-3 sm:mb-4">
               OPPORTUNITIES
@@ -400,7 +400,7 @@ export default function CareersPage() {
 
       {/* Culture CTA */}
       <section className="py-16 sm:py-24 md:py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-8 md:px-16 text-center">
+        <div className="max-w-4xl mx-auto px-6 lg:px-16 text-center">
           <div className="p-8 sm:p-12 md:p-16 bg-gradient-to-br from-[#EC4899]/20 via-[#8B5CF6]/20 to-[#00D4FF]/20 border border-white/10 rounded-2xl sm:rounded-3xl">
             <Users className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-6 sm:mb-8 text-[#EC4899]" />
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 sm:mb-6">Ready to Build?</h2>
@@ -428,46 +428,46 @@ export default function CareersPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-8 sm:gap-0">
-            <div className="text-center sm:text-left">
-              <div className="text-xs sm:text-sm font-bold tracking-[0.2em] mb-2">
+      <footer className="border-t border-white/5 py-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex justify-between items-center flex-col md:flex-row gap-8 md:gap-0">
+            <div>
+              <div className="text-sm font-bold tracking-[0.2em] mb-2 text-center md:text-left">
                 VENTURE<span className="text-[#00D4FF]">MOND</span>
               </div>
-              <div className="text-[10px] sm:text-xs text-gray-500">
+              <div className="text-xs text-gray-500 text-center md:text-left">
                 Building the future together
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               <a
                 href="/studio"
-                className="text-[10px] sm:text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
+                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
               >
                 Studio
               </a>
               <a
                 href="/saas"
-                className="text-[10px] sm:text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
+                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
               >
                 SaaS
               </a>
               <a
                 href="/insights"
-                className="text-[10px] sm:text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
+                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
               >
                 Insights
               </a>
-              <a href="/careers" className="text-[10px] sm:text-xs tracking-wider text-white">
+              <a href="/careers" className="text-xs tracking-wider text-white">
                 Careers
               </a>
             </div>
           </div>
 
-          <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-white/5 text-center">
-            <div className="text-[10px] sm:text-xs text-gray-600">
-              © 2025 Venturemond. Building the future together.
+          <div className="mt-12 pt-8 border-t border-white/5 text-center">
+            <div className="text-xs text-gray-600">
+              © 2025 Venturemond. All rights reserved.
             </div>
           </div>
         </div>

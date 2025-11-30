@@ -122,9 +122,9 @@ export default function SaasPage() {
           />
         </div>
 
-        <div className="max-w-7xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-12 gap-16 items-center">
-            <div className="col-span-7">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="col-span-1 lg:col-span-7">
               <div className="space-y-10">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full">
                   <Sparkles className="w-4 h-4 text-[#8B5CF6]" />
@@ -134,7 +134,7 @@ export default function SaasPage() {
                 </div>
 
                 <div className="space-y-6">
-                  <h1 className="text-8xl font-black leading-[0.85] tracking-tight">
+                  <h1 className="text-5xl lg:text-8xl font-black leading-[0.85] tracking-tight">
                     INTELLIGENT
                     <br />
                     <span className="bg-gradient-to-r from-[#8B5CF6] via-[#EC4899] to-[#00D4FF] bg-clip-text text-transparent">
@@ -144,16 +144,16 @@ export default function SaasPage() {
 
                   <div className="w-40 h-[3px] bg-gradient-to-r from-[#8B5CF6] to-transparent" />
 
-                  <p className="text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
+                  <p className="text-lg lg:text-xl text-gray-300 max-w-2xl leading-relaxed font-light">
                     Privacy-first business tools that combine collaboration,
                     automation, and secure cloud architecture for modern teams.
                   </p>
                 </div>
 
-                <div className="flex gap-6">
+                <div className="flex flex-col sm:flex-row gap-6">
                   <a
                     href="/contact"
-                    className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#8B5CF6]/25 transition-all duration-300"
+                    className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#8B5CF6]/25 transition-all duration-300 text-center"
                   >
                     TRY WORKSPACE
                   </a>
@@ -164,7 +164,7 @@ export default function SaasPage() {
               </div>
             </div>
 
-            <div className="col-span-5">
+            <div className="col-span-1 lg:col-span-5 hidden lg:block">
               <div className="relative">
                 {/* Product Preview Mockup */}
                 <div className="relative">
@@ -199,12 +199,12 @@ export default function SaasPage() {
 
       {/* Interactive Product Showcase */}
       <section className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="mb-20">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               PRODUCT SUITE
             </div>
-            <h2 className="text-6xl font-black">Intelligent Ecosystem</h2>
+            <h2 className="text-4xl lg:text-6xl font-black">Intelligent Ecosystem</h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -271,33 +271,32 @@ export default function SaasPage() {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#8B5CF6]/5 to-[#00D4FF]/5 transform skew-y-2" />
 
-        <div className="max-w-7xl mx-auto px-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
           <div className="mb-20 text-center">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               FLAGSHIP PRODUCT
             </div>
-            <h2 className="text-6xl font-black">Venturemond Workspace</h2>
+            <h2 className="text-4xl lg:text-6xl font-black">Venturemond Workspace</h2>
             <p className="text-gray-400 text-lg mt-6">
               Your private, intelligent command center
             </p>
           </div>
 
           {/* Feature Carousel */}
-          <div className="grid grid-cols-12 gap-16 items-center">
-            <div className="col-span-7">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="col-span-1 lg:col-span-7">
               <div className="space-y-12">
-                <div className="flex items-center gap-8">
+                <div className="flex flex-wrap items-center gap-4 lg:gap-8">
                   {features.map((feature, index) => {
                     const Icon = feature.icon;
                     return (
                       <button
                         key={index}
                         onClick={() => setActiveFeature(index)}
-                        className={`p-4 rounded-full border transition-all duration-300 ${
-                          activeFeature === index
+                        className={`p-4 rounded-full border transition-all duration-300 ${activeFeature === index
                             ? "border-white/30 bg-white/5"
                             : "border-white/10 hover:border-white/20"
-                        }`}
+                          }`}
                       >
                         <Icon
                           className="w-6 h-6"
@@ -335,7 +334,7 @@ export default function SaasPage() {
               </div>
             </div>
 
-            <div className="col-span-5">
+            <div className="col-span-1 lg:col-span-5">
               <div className="relative">
                 <div className="w-full h-96 relative">
                   <div
@@ -378,9 +377,8 @@ export default function SaasPage() {
               {features.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-1 transition-all duration-300 rounded-full ${
-                    activeFeature === index ? "w-8 bg-white" : "w-2 bg-white/30"
-                  }`}
+                  className={`h-1 transition-all duration-300 rounded-full ${activeFeature === index ? "w-8 bg-white" : "w-2 bg-white/30"
+                    }`}
                 />
               ))}
             </div>
@@ -390,18 +388,18 @@ export default function SaasPage() {
 
       {/* Security & Privacy Focus */}
       <section className="py-32">
-        <div className="max-w-7xl mx-auto px-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
           <div className="text-center mb-20">
             <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
               SECURITY FIRST
             </div>
-            <h2 className="text-6xl font-black mb-6">Privacy by Design</h2>
+            <h2 className="text-4xl lg:text-6xl font-black mb-6">Privacy by Design</h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Enterprise-grade security without compromising user experience
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Lock,
@@ -444,14 +442,14 @@ export default function SaasPage() {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#8B5CF6]/10 to-[#EC4899]/10 transform -skew-y-3" />
 
-        <div className="max-w-7xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-5 gap-16 items-center">
-            <div className="col-span-3 space-y-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+            <div className="col-span-1 lg:col-span-3 space-y-8">
               <div>
                 <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
                   GET STARTED
                 </div>
-                <h2 className="text-6xl font-black leading-tight">
+                <h2 className="text-5xl lg:text-6xl font-black leading-tight">
                   Experience the
                   <br />
                   <span className="bg-gradient-to-r from-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
@@ -465,10 +463,10 @@ export default function SaasPage() {
                 your free trial today.
               </p>
 
-              <div className="flex gap-6">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <a
                   href="/contact"
-                  className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#8B5CF6]/25 transition-all duration-300"
+                  className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#8B5CF6]/25 transition-all duration-300 text-center"
                 >
                   START FREE TRIAL
                 </a>
@@ -478,7 +476,7 @@ export default function SaasPage() {
               </div>
             </div>
 
-            <div className="col-span-2 relative">
+            <div className="col-span-1 lg:col-span-2 relative hidden lg:block">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="h-16 bg-[#8B5CF6]/20 rounded border border-[#8B5CF6]/30" />
@@ -496,18 +494,18 @@ export default function SaasPage() {
 
       {/* Footer */}
       <footer className="border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-16">
-          <div className="flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex justify-between items-center flex-col md:flex-row gap-8 md:gap-0">
             <div>
-              <div className="text-sm font-bold tracking-[0.2em] mb-2">
+              <div className="text-sm font-bold tracking-[0.2em] mb-2 text-center md:text-left">
                 VENTURE<span className="text-[#00D4FF]">MOND</span>
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-gray-500 text-center md:text-left">
                 Intelligent software for modern teams
               </div>
             </div>
 
-            <div className="flex gap-12">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               <a
                 href="/studio"
                 className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
@@ -534,7 +532,7 @@ export default function SaasPage() {
 
           <div className="mt-12 pt-8 border-t border-white/5 text-center">
             <div className="text-xs text-gray-600">
-              © 2025 Venturemond. Intelligent software for modern teams.
+              © 2025 Venturemond. All rights reserved.
             </div>
           </div>
         </div>
