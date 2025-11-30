@@ -5,13 +5,20 @@ import {
   ArrowUpRight,
   Code2,
   Lightbulb,
-  Target,
+  ArrowRight,
+  Sparkles,
   Rocket,
-  BarChart3,
   Play,
   Pause,
   ChevronLeft,
   ChevronRight,
+  Zap,
+  Server,
+  Terminal,
+  Database,
+  Flame,
+  Cloud,
+  Link,
 } from "lucide-react";
 import Header from "../components/Header";
 
@@ -97,16 +104,13 @@ export default function StudioPage() {
   ];
 
   const techStack = [
-    { name: "Next.js", type: "Frontend", desc: "SSR + static" },
-    { name: "React", type: "Frontend", desc: "UI + state" },
-    { name: "Node.js", type: "Backend", desc: "API servers" },
-    { name: "Python", type: "Backend", desc: "ML & workers" },
-    { name: "TypeScript", type: "Language", desc: "Type safety" },
-    { name: "PostgreSQL", type: "Database", desc: "Relational" },
-    { name: "MongoDB", type: "Database", desc: "Document store" },
-    { name: "AWS", type: "Cloud", desc: "Infra & services" },
-    { name: "Firebase", type: "Platform", desc: "Auth & realtime" },
-    { name: "Vercel", type: "Deployment", desc: "Hosting" },
+    { name: "Next.js", icon: Zap },
+    { name: "Node.js", icon: Server },
+    { name: "Python", icon: Terminal },
+    { name: "MongoDB", icon: Database },
+    { name: "Firebase", icon: Flame },
+    { name: "AWS", icon: Cloud },
+    { name: "LangChain", icon: Link },
   ];
 
   useEffect(() => {
@@ -298,14 +302,20 @@ export default function StudioPage() {
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0A0A0F] to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0A0A0F] to-transparent z-10" />
 
-          <div className="flex gap-6 pb-4 overflow-x-auto px-6 lg:px-16 no-scrollbar">
-            {techStack.map((tech, idx) => (
-              <div key={idx} className="min-w-[240px] h-48 p-6 bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#00D4FF]/50 transition-all duration-300 flex-shrink-0">
-                <div className="text-lg font-bold mb-2">{tech.name}</div>
-                <div className="text-sm text-gray-400">{tech.type}</div>
-                <div className="text-xs text-gray-500 mt-2">{tech.desc}</div>
-              </div>
-            ))}
+          <div className="flex gap-8 pb-4 overflow-x-auto px-6 lg:px-16 no-scrollbar">
+            {techStack.map((tech, idx) => {
+              const Icon = tech.icon;
+              return (
+                <div key={idx} className="flex flex-col items-center gap-4 flex-shrink-0 group cursor-pointer">
+                  <div className="w-20 h-20 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center group-hover:border-[#00D4FF]/50 group-hover:bg-white/10 transition-all duration-300">
+                    <Icon className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">
+                    {tech.name}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
