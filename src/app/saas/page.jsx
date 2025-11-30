@@ -17,6 +17,7 @@ import {
   Command,
 } from "lucide-react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function SaasPage() {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -152,14 +153,18 @@ export default function SaasPage() {
 
                 <div className="flex flex-col sm:flex-row gap-6">
                   <a
-                    href="/contact"
+                    href="https://workplace.venturemond.com/index.php/login"
                     className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#8B5CF6]/25 transition-all duration-300 text-center"
                   >
-                    TRY WORKSPACE
+                    EXPLORE WORKSPACE
                   </a>
-                  <button className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300">
-                    VIEW DEMO
-                  </button>
+
+                  <a
+                    href="/contact"
+                    className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300"
+                  >
+                    CONTACT
+                  </a>
                 </div>
               </div>
             </div>
@@ -294,8 +299,8 @@ export default function SaasPage() {
                         key={index}
                         onClick={() => setActiveFeature(index)}
                         className={`p-4 rounded-full border transition-all duration-300 ${activeFeature === index
-                            ? "border-white/30 bg-white/5"
-                            : "border-white/10 hover:border-white/20"
+                          ? "border-white/30 bg-white/5"
+                          : "border-white/10 hover:border-white/20"
                           }`}
                       >
                         <Icon
@@ -493,50 +498,7 @@ export default function SaasPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-16">
-          <div className="flex justify-between items-center flex-col md:flex-row gap-8 md:gap-0">
-            <div>
-              <div className="text-sm font-bold tracking-[0.2em] mb-2 text-center md:text-left">
-                VENTURE<span className="text-[#00D4FF]">MOND</span>
-              </div>
-              <div className="text-xs text-gray-500 text-center md:text-left">
-                Intelligent software for modern teams
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              <a
-                href="/studio"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Studio
-              </a>
-              <a href="/saas" className="text-xs tracking-wider text-white">
-                SaaS
-              </a>
-              <a
-                href="/insights"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Insights
-              </a>
-              <a
-                href="/careers"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Careers
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-white/5 text-center">
-            <div className="text-xs text-gray-600">
-              © 2025 Venturemond. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

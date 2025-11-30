@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Header from "./components/Header";
 import logo from "./assets/logo.png";
+import Footer from "./components/Footer";
 
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -465,56 +466,7 @@ export default function HomePage() {
       </section>
 
       {/* Minimal Footer */}
-      <footer className="border-t border-white/5 py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-16">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <img src={logo} alt="Logo" className="h-8 w-auto object-contain" />
-                <div className="text-sm font-bold tracking-[0.2em]">
-                  VENTURE<span className="text-[#00D4FF]">MOND</span>
-                </div>
-              </div>
-              <div className="text-xs text-gray-500 text-center md:text-left">
-                Engineering bold futures
-              </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              <a
-                href="/studio"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Studio
-              </a>
-              <a
-                href="/saas"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                SaaS
-              </a>
-              <a
-                href="/insights"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Insights
-              </a>
-              <a
-                href="/careers"
-                className="text-xs tracking-wider text-gray-400 hover:text-white transition-colors"
-              >
-                Careers
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-white/5 text-center">
-            <div className="text-xs text-gray-600">
-              © 2025 Venturemond. Engineering the future.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <style jsx global>{`
         @keyframes slideUp {
