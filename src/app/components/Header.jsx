@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
 
@@ -72,8 +72,8 @@ export default function Header() {
                   key={item.href}
                   to={item.href}
                   className={`relative text-xs tracking-wider transition-all ${isActive(item.href)
-                      ? "text-white font-semibold"
-                      : "text-gray-400 hover:text-white"
+                    ? "text-white font-semibold"
+                    : "text-gray-400 hover:text-white"
                     }`}
                 >
                   {item.name.toUpperCase()}
@@ -84,12 +84,7 @@ export default function Header() {
                 </Link>
               ))}
 
-              <Link
-                to="/contact"
-                className="px-6 py-3 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black text-xs font-medium rounded-sm hover:shadow-lg"
-              >
-                INITIATE PROJECT
-              </Link>
+
             </nav>
 
             {/* MOBILE BUTTONS */}
@@ -130,21 +125,15 @@ export default function Header() {
               to={item.href}
               onClick={() => setIsOpen(false)}
               className={`py-4 px-4 rounded-lg text-base ${isActive(item.href)
-                  ? "text-white font-semibold bg-white/10"
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
+                ? "text-white font-semibold bg-white/10"
+                : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
             >
               {item.name}
             </Link>
           ))}
 
-          <Link
-            to="/contact"
-            onClick={() => setIsOpen(false)}
-            className="mt-4 px-6 py-3 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black text-sm font-bold rounded-lg text-center"
-          >
-            INITIATE PROJECT
-          </Link>
+
         </nav>
       </aside>
     </>

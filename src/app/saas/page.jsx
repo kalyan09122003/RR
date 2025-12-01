@@ -15,6 +15,11 @@ import {
   Monitor,
   Smartphone,
   Command,
+  Link,
+  Search,
+  Compass,
+  Code,
+  Rocket,
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -26,57 +31,63 @@ export default function SaasPage() {
 
   const features = [
     {
-      title: "Private Collaboration",
-      description:
-        "Secure, encrypted workspace for teams that prioritize privacy",
+      title: "Intelligent Architecture",
+      description: "Every system is designed for automation, analytics, and adaptability.",
       color: "#00D4FF",
-      icon: Lock,
-      preview: "Real-time collaboration without data tracking",
-    },
-    {
-      title: "Intelligent Automation",
-      description: "AI-powered workflows that adapt to your team's patterns",
-      color: "#8B5CF6",
       icon: Brain,
-      preview: "Smart task routing and predictive scheduling",
+      preview: "Self-optimizing systems",
     },
     {
-      title: "Secure Architecture",
-      description: "Enterprise-grade security with zero-knowledge encryption",
+      title: "Privacy by Design",
+      description: "Your data stays secure — always.",
+      color: "#8B5CF6",
+      icon: Lock,
+      preview: "Zero-knowledge encryption",
+    },
+    {
+      title: "Cloud-Native Scalability",
+      description: "Optimized for global performance and uptime.",
       color: "#EC4899",
-      icon: Shield,
-      preview: "End-to-end encryption for all communications",
+      icon: Cloud,
+      preview: "99.99% Uptime SLA",
     },
     {
-      title: "Cross-Platform Sync",
-      description: "Seamless experience across web, mobile, and desktop",
+      title: "Experience-Led Design",
+      description: "Modern, minimal, and intuitive interfaces.",
       color: "#10B981",
-      icon: Globe,
-      preview: "Unified workspace across all devices",
+      icon: Monitor,
+      preview: "User-centric interfaces",
+    },
+    {
+      title: "Seamless Integrations",
+      description: "Works with the tools your business already uses.",
+      color: "#F59E0B",
+      icon: Link,
+      preview: "API-first connectivity",
     },
   ];
 
   const products = [
     {
-      name: "Venturemond Workspace",
-      tagline: "Private. Intelligent. Scalable.",
+      name: "Venturemond Automate",
+      tagline: "Automate Everything, Effortlessly",
       description:
-        "The complete collaboration platform built for teams that value privacy and performance",
-      status: "Available Now",
+        "No-code workflow engine that connects tools and automates operations",
+      status: "Prototype",
       color: "#00D4FF",
     },
     {
-      name: "Venturemond Analytics",
-      tagline: "Privacy-First Insights",
-      description: "Business intelligence without compromising user privacy",
-      status: "Coming Soon",
+      name: "Venturemond CRM",
+      tagline: "The CRM That Thinks Ahead",
+      description: "Smart CRM designed for startups and scaling teams to manage customers efficiently.",
+      status: "Research",
       color: "#8B5CF6",
     },
     {
-      name: "Venturemond Connect",
-      tagline: "Secure Team Communication",
-      description: "End-to-end encrypted messaging and video conferencing",
-      status: "Beta",
+      name: "Venturemond Desk AI",
+      tagline: "Your Team’s AI Second Brain",
+      description: "Document intelligence and summarization assistant for professionals.",
+      status: "Concept",
       color: "#EC4899",
     },
   ];
@@ -160,10 +171,10 @@ export default function SaasPage() {
                   </a>
 
                   <a
-                    href="/contact"
+                    href="/waitlist"
                     className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300"
                   >
-                    CONTACT
+                    JOIN WAITLIST
                   </a>
                 </div>
               </div>
@@ -196,6 +207,80 @@ export default function SaasPage() {
 
                   <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#8B5CF6]/20 rounded-full blur-xl" />
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Innovation Section */}
+      <section className="py-32 bg-[#0A0A0F] border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl lg:text-6xl font-black mb-8 leading-tight">
+                Software that thinks, scales, and performs.
+              </h2>
+              <div className="space-y-6 text-lg text-gray-400 leading-relaxed">
+                <p>
+                  Venturemond SaaS is our product innovation division — focused on building modern,
+                  cloud-first tools that make technology frictionless.
+                </p>
+                <p>
+                  We design products where privacy, intelligence, and experience converge — giving teams
+                  better control, speed, and visibility.
+                </p>
+                <p>
+                  Every platform we build is engineered to simplify complexity, automate processes, and help
+                  organizations focus on growth.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#8B5CF6]/20 to-[#EC4899]/20 rounded-3xl blur-2xl" />
+              <div className="relative p-10 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm">
+                <blockquote className="text-2xl font-light italic text-white leading-relaxed">
+                  “We don’t just build software. We build systems that work smarter.”
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Venturemond Workspace Section */}
+      <section className="py-32 bg-[#0A0A0F]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="col-span-1 lg:col-span-6">
+              <div className="mb-8">
+                <div className="text-xs tracking-[0.3em] text-[#8B5CF6] mb-4">UNIFIED WORKSPACE</div>
+                <h2 className="text-4xl lg:text-6xl font-black mb-6">Private. Smart. Seamless.</h2>
+                <p className="text-lg text-gray-400 leading-relaxed mb-6">
+                  Venturemond Workspace is a unified, intelligent workspace designed for teams that value
+                  privacy and performance.
+                </p>
+                <p className="text-lg text-gray-400 leading-relaxed">
+                  It brings collaboration, storage, and automation into one secure environment — built for
+                  modern businesses.
+                </p>
+              </div>
+            </div>
+            <div className="col-span-1 lg:col-span-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  "Secure document and file collaboration",
+                  "AI-assisted productivity tools",
+                  "Workflow automation",
+                  "Role-based user controls",
+                  "Private cloud deployment",
+                  "Integration-ready APIs"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3 p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors">
+                    <div className="mt-1 w-2 h-2 rounded-full bg-[#8B5CF6]" />
+                    <span className="text-sm text-gray-300">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -266,6 +351,72 @@ export default function SaasPage() {
                     </button>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Process Section */}
+      <section className="py-32 bg-[#0A0A0F]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl lg:text-6xl font-black mb-6">
+              From concept to product — <br className="hidden lg:block" />
+              <span className="bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
+                fast, focused, and reliable.
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Our SaaS engineering process is built around clarity, speed, and adaptability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                step: "1",
+                icon: Search,
+                title: "Discovery & Problem Definition",
+                desc: "Identify pain points worth solving through research and insight.",
+                color: "#00D4FF"
+              },
+              {
+                step: "2",
+                icon: Compass,
+                title: "Product Architecture",
+                desc: "Design scalable systems and user-first experiences that stand the test of growth.",
+                color: "#8B5CF6"
+              },
+              {
+                step: "3",
+                icon: Code,
+                title: "Development & Integration",
+                desc: "Build fast, test early, and refine continuously — ensuring high-performance delivery.",
+                color: "#EC4899"
+              },
+              {
+                step: "4",
+                icon: Rocket,
+                title: "Launch & Iterate",
+                desc: "Deploy, monitor, and evolve using feedback for constant product improvement.",
+                color: "#10B981"
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="group p-8 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10 font-black text-6xl group-hover:opacity-20 transition-opacity">
+                  {item.step}
+                </div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 bg-white/5 group-hover:scale-110 transition-transform duration-300" style={{ color: item.color }}>
+                    <item.icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" style={{ backgroundColor: item.color }} />
               </div>
             ))}
           </div>
@@ -470,14 +621,17 @@ export default function SaasPage() {
 
               <div className="flex flex-col sm:flex-row gap-6">
                 <a
-                  href="/contact"
+                  href="/waitlist"
                   className="px-8 py-4 bg-gradient-to-r from-[#8B5CF6] to-[#C084FC] text-white font-bold text-sm tracking-wider hover:shadow-lg hover:shadow-[#8B5CF6]/25 transition-all duration-300 text-center"
                 >
-                  START FREE TRIAL
+                  JOIN WAITLIST
                 </a>
-                <button className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300">
-                  SCHEDULE DEMO
-                </button>
+                <a
+                  href="/contact"
+                  className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300"
+                >
+                  Contact
+                </a>
               </div>
             </div>
 

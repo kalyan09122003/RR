@@ -19,6 +19,10 @@ import {
   Flame,
   Cloud,
   Link,
+  Settings,
+  Brain,
+  Target,
+  RefreshCw,
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -175,11 +179,13 @@ export default function StudioPage() {
                     href="/contact"
                     className="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-colors"
                   >
-                    START A VENTURE
+                    PARTNER WITH STUDIO
                   </a>
-                  <button className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300">
-                    VIEW PORTFOLIO
-                  </button>
+                  <a
+                    href="/contact"
+                    className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-all duration-300">
+                    START A PROJECT
+                  </a>
                 </div>
               </div>
             </div>
@@ -280,7 +286,7 @@ export default function StudioPage() {
                   <div className="flex justify-between items-center mt-6">
                     <div className="text-sm text-gray-400">{active.phase} • {active.title}</div>
                     <div className="flex gap-2">
-                      <button className="px-3 py-2 bg-white/5 rounded text-sm">Learn More</button>
+
                       <a href="/contact" className="px-3 py-2 bg-gradient-to-r from-[#00D4FF] to-[#0EA5E9] text-black rounded text-sm font-semibold">Work with us</a>
                     </div>
                   </div>
@@ -317,6 +323,108 @@ export default function StudioPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* How We Work Section */}
+      <section className="py-32 bg-[#0A0A0F] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="mb-20">
+            <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">HOW WE WORK</div>
+            <h2 className="text-4xl lg:text-6xl font-black mb-6">A process built for clarity and speed.</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
+            {[
+              { number: "01", title: "Discovery Call", desc: "Understand your idea, goals, and target audience." },
+              { number: "02", title: "Validation Sprint", desc: "Test and refine your concept." },
+              { number: "03", title: "Build Sprint", desc: "Design and develop the MVP or full-scale product." },
+              { number: "04", title: "Launch", desc: "Deploy, test, and optimize." },
+              { number: "05", title: "Scale", desc: "Plan next-phase growth and enhancements." },
+            ].map((step, idx) => (
+              <div key={idx} className="relative group p-6 border border-white/5 rounded-2xl hover:bg-white/5 transition-all duration-300">
+                <div className="text-5xl font-black text-white/10 mb-6 group-hover:text-[#00D4FF]/20 transition-colors">
+                  {step.number}
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white group-hover:text-[#00D4FF] transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center lg:justify-start">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:bg-gray-200 transition-colors"
+            >
+              START A PROJECT
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Founders Choose Venturemond */}
+      <section className="py-32 bg-[#0A0A0F]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-16">
+          <div className="flex items-center gap-4 mb-16">
+            <Zap className="w-8 h-8 lg:w-12 lg:h-12 text-[#FFD700]" />
+            <h2 className="text-3xl lg:text-5xl font-black">Why Founders Choose Venturemond</h2>
+          </div>
+
+          <div className="bg-[#1A1A1F] border border-white/10 rounded-2xl overflow-hidden">
+            <div className="grid grid-cols-12 border-b border-white/10 bg-white/5 p-6 text-sm font-bold text-gray-300 uppercase tracking-wider">
+              <div className="col-span-12 lg:col-span-4 mb-2 lg:mb-0">Advantage</div>
+              <div className="col-span-12 lg:col-span-8 hidden lg:block">Description</div>
+            </div>
+
+            <div className="divide-y divide-white/10">
+              {[
+                {
+                  icon: Settings,
+                  title: "End-to-End Execution",
+                  desc: "From concept to launch — all under one roof.",
+                },
+                {
+                  icon: Brain,
+                  title: "Founder-Led Thinking",
+                  desc: "We approach every build like a co-founder, not a contractor.",
+                },
+                {
+                  icon: Target,
+                  title: "Outcome-Focused",
+                  desc: "Every deliverable ties back to business results.",
+                },
+                {
+                  icon: Lightbulb,
+                  title: "Scalable Systems",
+                  desc: "Products built for long-term evolution, not one-time launches.",
+                },
+                {
+                  icon: RefreshCw,
+                  title: "Rapid Execution",
+                  desc: "Speed without compromise on quality or precision.",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="grid grid-cols-1 lg:grid-cols-12 p-6 hover:bg-white/5 transition-colors items-start lg:items-center gap-2 lg:gap-0"
+                >
+                  <div className="col-span-12 lg:col-span-4 flex items-center gap-4">
+                    <item.icon className="w-5 h-5 text-gray-400" />
+                    <span className="font-bold text-white">{item.title}</span>
+                  </div>
+                  <div className="col-span-12 lg:col-span-8 text-gray-400 text-sm lg:text-base pl-9 lg:pl-0">
+                    {item.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

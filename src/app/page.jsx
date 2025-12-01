@@ -12,6 +12,14 @@ import {
   Square,
   Star,
   Hexagon,
+  Shield,
+  ArrowRight,
+  Lock,
+  Brain,
+  Target,
+  Lightbulb,
+  RefreshCw,
+  Layers,
 } from "lucide-react";
 import Header from "./components/Header";
 import logo from "./assets/logo.png";
@@ -314,98 +322,232 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Diagonal Process Timeline */}
-      <section className="relative py-16 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/5 via-transparent to-[#8B5CF6]/5 transform -skew-y-2" />
+      {/* Venturemond Workspace Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 relative z-10">
+              <div>
+                <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
+                  WORKSPACE
+                </div>
+                <h2 className="text-4xl md:text-6xl font-black leading-tight">
+                  Private. <br />
+                  <span className="text-gray-500">Smart.</span> <br />
+                  <span className="bg-gradient-to-r from-[#00D4FF] to-[#8B5CF6] bg-clip-text text-transparent">
+                    Seamless.
+                  </span>
+                </h2>
+              </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 md:px-16">
-          <div className="mb-12 md:mb-20">
-            <div className="text-xs tracking-[0.3em] text-gray-500 mb-4">
+              <p className="text-gray-400 text-lg leading-relaxed max-w-xl">
+                Venturemond Workspace is a private, intelligent workspace for teams that value privacy,
+                performance, and productivity. It combines collaboration, automation, and secure cloud
+                infrastructure into a single modern platform.
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-4">
+                <a href="/waitlist" className="px-8 py-4 bg-white text-black font-bold text-sm tracking-wider hover:scale-105 transition-transform duration-300">
+                  JOIN WAITLIST
+                </a>
+                <a href="/contact" className="px-8 py-4 border border-white/20 text-white font-medium text-sm tracking-wider hover:bg-white/5 transition-colors">
+                  REQUEST ACCESS
+                </a>
+              </div>
+            </div>
+
+            <div className="relative">
+              {/* Decorative Background */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#00D4FF]/20 via-[#8B5CF6]/20 to-[#EC4899]/20 blur-3xl rounded-full opacity-50" />
+
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 space-y-6">
+                {[
+                  { text: "Secure cloud collaboration", icon: Shield, color: "text-[#00D4FF]" },
+                  { text: "Integrated productivity tools", icon: Zap, color: "text-[#8B5CF6]" },
+                  { text: "Workflow automation", icon: Sparkles, color: "text-[#EC4899]" },
+                  { text: "Role-based access control", icon: Lock, color: "text-[#00D4FF]" },
+                  { text: "API & integration ready", icon: Code2, color: "text-[#8B5CF6]" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors group">
+                    <div className={`p-2 rounded-lg bg-white/5 ${item.color} group-hover:scale-110 transition-transform`}>
+                      <item.icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-gray-300 font-medium group-hover:text-white transition-colors">
+                      {item.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Process Section */}
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          <div className="mb-16 md:mb-24 text-center">
+            <div className="text-xs tracking-[0.3em] text-gray-500 mb-6">
               METHODOLOGY
             </div>
-            <h2 className="text-4xl md:text-5xl font-black">Strategic Process</h2>
+            <h2 className="text-4xl md:text-6xl font-black leading-tight max-w-4xl mx-auto">
+              A simple, structured approach to <br />
+              <span className="bg-gradient-to-r from-[#00D4FF] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
+                building success.
+              </span>
+            </h2>
           </div>
 
           <div className="relative">
-            {/* Diagonal Timeline Line */}
-            <div className="hidden md:block absolute left-0 top-0 w-full h-full">
-              <svg
-                className="w-full h-full"
-                viewBox="0 0 1200 400"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,200 Q300,100 600,150 Q900,200 1200,100"
-                  stroke="url(#gradient)"
-                  strokeWidth="2"
-                  fill="none"
-                  className="opacity-30"
-                />
-                <defs>
-                  <linearGradient
-                    id="gradient"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="0%"
-                  >
-                    <stop offset="0%" stopColor="#00D4FF" />
-                    <stop offset="50%" stopColor="#8B5CF6" />
-                    <stop offset="100%" stopColor="#EC4899" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+            {/* Connecting Line */}
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-[#00D4FF]/20 via-[#8B5CF6]/20 to-[#EC4899]/20 -translate-y-1/2" />
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
               {[
                 {
-                  title: "DISCOVER",
-                  desc: "Market analysis and strategic research",
-                  color: "#00D4FF",
+                  step: "01",
+                  title: "Discover",
+                  desc: "Understand your goals and challenges.",
+                  color: "group-hover:text-[#00D4FF]",
+                  bg: "group-hover:bg-[#00D4FF]/10",
+                  border: "group-hover:border-[#00D4FF]/50",
                 },
                 {
-                  title: "VALIDATE",
-                  desc: "Product-market fit and user testing",
-                  color: "#0EA5E9",
+                  step: "02",
+                  title: "Validate",
+                  desc: "Confirm opportunity and market fit.",
+                  color: "group-hover:text-[#8B5CF6]",
+                  bg: "group-hover:bg-[#8B5CF6]/10",
+                  border: "group-hover:border-[#8B5CF6]/50",
                 },
                 {
-                  title: "BUILD",
-                  desc: "Rapid development and iteration",
-                  color: "#8B5CF6",
+                  step: "03",
+                  title: "Build",
+                  desc: "Design and develop the product.",
+                  color: "group-hover:text-[#EC4899]",
+                  bg: "group-hover:bg-[#EC4899]/10",
+                  border: "group-hover:border-[#EC4899]/50",
                 },
                 {
-                  title: "LAUNCH",
-                  desc: "Go-to-market execution",
-                  color: "#C084FC",
+                  step: "04",
+                  title: "Launch",
+                  desc: "Execute your go-to-market plan.",
+                  color: "group-hover:text-[#00D4FF]",
+                  bg: "group-hover:bg-[#00D4FF]/10",
+                  border: "group-hover:border-[#00D4FF]/50",
                 },
                 {
-                  title: "SCALE",
-                  desc: "Growth optimization and expansion",
-                  color: "#EC4899",
+                  step: "05",
+                  title: "Scale",
+                  desc: "Optimize, iterate, and grow.",
+                  color: "group-hover:text-[#8B5CF6]",
+                  bg: "group-hover:bg-[#8B5CF6]/10",
+                  border: "group-hover:border-[#8B5CF6]/50",
                 },
-              ].map((step, index) => (
-                <div key={index} className="group">
-                  <div className="relative mb-8">
-                    <div
-                      className="w-4 h-4 rounded-full mx-auto md:mx-auto mb-4 group-hover:scale-150 transition-transform duration-300"
-                      style={{ backgroundColor: step.color }}
-                    />
-                    <div className="text-left md:text-center">
-                      <div
-                        className="text-xs tracking-widest font-bold mb-2"
-                        style={{ color: step.color }}
-                      >
-                        {step.title}
-                      </div>
-                      <div className="text-xs text-gray-400 leading-relaxed">
-                        {step.desc}
-                      </div>
+              ].map((item, index) => (
+                <div key={index} className="group relative">
+                  <div className={`h-full p-6 bg-[#0A0A0F] border border-white/5 rounded-2xl transition-all duration-300 ${item.border} ${item.bg} hover:-translate-y-2`}>
+                    <div className="text-4xl font-black text-white/5 mb-4 group-hover:text-white/10 transition-colors">
+                      {item.step}
                     </div>
+                    <h3 className={`text-xl font-bold mb-3 transition-colors ${item.color}`}>
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
+
+                  {/* Connector Dot */}
+                  <div className="hidden md:block absolute top-1/2 -right-4 w-2 h-2 rounded-full bg-white/10 -translate-y-1/2 z-20 group-hover:bg-white transition-colors" />
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="mt-16 text-center">
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm tracking-widest hover:scale-105 transition-transform duration-300 rounded-full"
+            >
+              START A PROJECT
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Founders Choose Venturemond Section */}
+      <section className="relative py-24 bg-[#0A0A0F] overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 md:px-16">
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-500/10 rounded-2xl mb-8 border border-yellow-500/20 shadow-[0_0_30px_rgba(234,179,8,0.1)]">
+              <Zap className="w-8 h-8 text-yellow-500" />
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black leading-[1.1] mb-6">
+              Why Founders Choose <br />
+              <span className="bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent">
+                Venturemond
+              </span>
+            </h2>
+          </div>
+
+          <div className="relative bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-sm">
+            {[
+              {
+                title: "Full-Stack Execution",
+                desc: "From strategy to development everything in house.",
+                icon: Layers,
+                color: "text-[#00D4FF]",
+                bg: "bg-[#00D4FF]/10",
+              },
+              {
+                title: "Founder-Led Thinking",
+                desc: "We think like co-builders, not vendors.",
+                icon: Brain,
+                color: "text-[#EC4899]",
+                bg: "bg-[#EC4899]/10",
+              },
+              {
+                title: "Outcome Focused",
+                desc: "Each project ties to measurable results.",
+                icon: Target,
+                color: "text-[#8B5CF6]",
+                bg: "bg-[#8B5CF6]/10",
+              },
+              {
+                title: "Scalable Systems",
+                desc: "We build for long-term growth.",
+                icon: Lightbulb,
+                color: "text-yellow-400",
+                bg: "bg-yellow-400/10",
+              },
+              {
+                title: "Speed + Precision",
+                desc: "Rapid execution without compromise.",
+                icon: RefreshCw,
+                color: "text-[#10B981]",
+                bg: "bg-[#10B981]/10",
+              }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="group flex flex-col md:flex-row items-start md:items-center gap-6 p-8 border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors duration-300"
+              >
+                <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon className={`w-6 h-6 ${item.color}`} />
+                </div>
+
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 w-full items-center">
+                  <h3 className="text-xl font-bold text-white group-hover:text-[#00D4FF] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed md:text-right">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
